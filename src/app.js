@@ -23,6 +23,6 @@ var projects = require('./projects')(app);
 var activities = require('./activities')(app);
 var checkins = require('./checkins')(app);
 
-app.listen(process.env.PORT || 8000, function () {
-    console.log('App now listening on %s', process.env.PORT || 8000);
+app.listen(process.env.PORT || 8000, process.env.IP, function () {
+    console.log('App now listening on %s:%s', process.env.IP, process.env.PORT || 8000);
 });

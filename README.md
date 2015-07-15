@@ -38,12 +38,9 @@ Next, run the application:
 $ npm start
 ```
 
-```
-$ curl -XGET -s localhost:8000/v1/times | python -m json.tool
-``
-
 Then, in another terminal, make a request with curl.
 Piping it to python makes the output pretty.
+
 ```
 $ curl -XGET -s localhost:8000/v1/times | python -m json.tool
 [

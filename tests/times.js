@@ -8,7 +8,7 @@ module.exports = function(expect, request, base_url) {
                         duration: 12,
                         user: 'tschuy',
                         project: ['wf'],
-                        activity: ['dev'],
+                        activity: ['dev', 'developing'],
                         notes: '',
                         issue_uri: 'https://github.com/osu-cass' +
                             '/whats-fresh-api/issues/56',
@@ -35,7 +35,7 @@ module.exports = function(expect, request, base_url) {
                     duration: 12,
                     user: 'tschuy',
                     project: ['wf'],
-                    activity: ['dev'],
+                    activity: ['dev', 'developing'],
                     notes: '',
                     issue_uri: 'https://github.com/osu-cass/whats-fresh-api' +
                         '/issues/56',

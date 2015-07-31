@@ -12,13 +12,23 @@ module.exports = function(expect, request, base_url) {
                     },
                     {
                         name: 'Development',
-                        slugs: ['dev'],
+                        slugs: ['dev', 'developing'],
                         id: 2
                     },
                     {
                         name: 'Systems',
                         slugs: ['sysadmin', 'sys'],
                         id: 3
+                    },
+                    {
+                        name: 'Planning',
+                        slugs: ['meeting'],
+                        id: 4
+                    },
+                    {
+                        name: 'Meeting',
+                        slugs: ['planning'],
+                        id: 5
                     }
                 ];
 

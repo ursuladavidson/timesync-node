@@ -11,6 +11,14 @@
       {
          "name":"Systems",
          "id": 3
+      },
+      {
+         "name": "Planning",
+         "id": 4
+      },
+      {
+         "name": "Meeting",
+         "id": 5
       }
    ],
    "users":[
@@ -107,6 +115,24 @@
         "id": 4,
         "project": null,
         "activity": 3
+     },
+     {
+        "name": "developing",
+        "id": 5,
+        "project": null,
+        "activity": 2
+     },
+     {
+        "name": "meeting",
+        "id": 6,
+        "project": null,
+        "activity": 4
+     },
+     {
+        "name": "planning",
+        "id": 7,
+        "project": null,
+        "activity": 5
      }
-    ]
+   ]
 }

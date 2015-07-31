@@ -63,7 +63,6 @@ describe('Endpoints', function() {
 });
 
 describe('Helpers', function() {
-    this.timeout(5000);
 
     before(function(done) {
         knex.migrate.latest().then(function() {

@@ -3,6 +3,7 @@ require('../src/app');
 var requestBuilder = require('request');
 var expect = require('chai').expect;
 var sqlFixtures = require('sql-fixtures');
+var sinon = require('sinon');
 
 var request = requestBuilder.defaults({encoding: null});
 var testData = require('./fixtures/test_data');
@@ -12,6 +13,10 @@ var knex = require('knex')(knexfile.mocha);
 var port = process.env.PORT || 8000;
 var baseUrl = 'http://localhost:' + port + '/v1/';
 
+var before = function(done) {
+    runMigrations(done);
+};
+
 var reloadFixtures = function(done) {
     // Clear SQLite indexes
     knex.raw('delete from sqlite_sequence').then(function() {
@@ -20,6 +25,12 @@ var reloadFixtures = function(done) {
         });
     });
 };
+
+var runMigrations = function(done) {
+    knex.migrate.latest().then(function() {
+        done();
+    });
+}
 
 var clearDatabase = (function(done) {
     knex('projects').del().then(function() {
@@ -39,13 +50,34 @@ var clearDatabase = (function(done) {
     });
 });
 
-describe('Endpoints', function() {
-    this.timeout(5000);
+describe('GET Endpoints', function() {
+    before(before);
+
+    beforeEach(function(done) {
+        reloadFixtures(done);
+    });
+
+    afterEach(function(done) {
+        clearDatabase(done);
+    });
+
+    require('./get/times')(expect, request, baseUrl);
+    require('./get/activities')(expect, request, baseUrl);
+    require('./get/projects')(expect, request, baseUrl);
+
+});
+
+describe('POST Endpoints', function() {
+    var helpers = require('../src/helpers');
 
     before(function(done) {
-        knex.migrate.latest().then(function() {
-            done();
-        });
+        sinon.stub(helpers, 'checkProject')
+        .yields(
+            new Promise(function(resolver, reject) {
+                resolver(1);
+            })
+        );
+        before(done);
     });
 
     beforeEach(function(done) {
@@ -56,21 +88,11 @@ describe('Endpoints', function() {
         clearDatabase(done);
     });
 
-    require('./times')(expect, request, baseUrl);
-    require('./activities')(expect, request, baseUrl);
-    require('./projects')(expect, request, baseUrl);
-    require('./helpers')(expect);
-
+    require('./post/times.js')(expect, request, baseUrl);
 });
 
 describe('Helpers', function() {
-    this.timeout(5000);
-
-    before(function(done) {
-        knex.migrate.latest().then(function() {
-            done();
-        });
-    });
+    before(before);
 
     beforeEach(function(done) {
         reloadFixtures(done);

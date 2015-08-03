@@ -206,4 +206,15 @@ module.exports = function(app) {
             return res.status(err.status).send(err);
         });
     });
+
+    app.post(app.get('version') + '/times', function(req, res) {
+        var helpers = require('./helpers');
+        // console.log('POST /times');
+        // console.log(helpers);
+        // console.log(helpers.checkProject);
+        helpers.checkProject(req.params.project).then(function(project) {
+            console.log(project);
+            res.send(project);
+        })
+    });
 };

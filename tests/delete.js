@@ -16,6 +16,7 @@ module.exports = function(expect) {
 
         it('Fails if it receives an invalid activity', function(done) {
             deleter.deleteActivity('Napping').then(function(activity) {
+                //expect(res.statusCode).to.equal(400);
                 expect(activity).to.be.an('undefined');
                 done();
             });
@@ -33,14 +34,9 @@ module.exports = function(expect) {
         });
 
         it('Fails if it receives a non-existent slug', function() {
-            deleter.deleteActivitySlug('notathing').then(function(res) {
-                /*var expectedResult = {
-                    status: 400,
-                    error: 'The provided identifier does not exist!'
-                    text: 'Expected slug but received notathing'
-                };*/
-
-                expect(res.statusCode).to.equal(400);
+            deleter.deleteActivitySlug('notathing').then(function(slug) {
+                //expect(res.statusCode).to.equal(400);
+                expect(slug).to.be.an('undefined');
                 done();
             });
         });

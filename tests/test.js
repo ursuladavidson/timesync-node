@@ -60,6 +60,7 @@ describe('Endpoints', function() {
     require('./activities')(expect, request, baseUrl);
     require('./projects')(expect, request, baseUrl);
     require('./helpers')(expect);
+    require('./delete')(expect);
 
 });
 

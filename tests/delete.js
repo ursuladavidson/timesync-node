@@ -13,6 +13,13 @@ module.exports = function(expect) {
                 done();
             });
         });
+
+        it('Fails if it receives an invalid activity', function(done) {
+            deleter.deleteActivity('Napping').then(function(activity) {
+                expect(activity).to.be.an('undefined');
+                done();
+            });
+        });
     });
 
     describe('DELETE /activities/:slug', function() {

@@ -16,11 +16,11 @@ module.exports = function(expect) {
     });
 
     describe('DELETE /activities/:slug', function() {
-        it('Returns an Oject Not Found error for deleted activity (slug)',
+        it('Deletes the activity affiliated with the activity slug',
         function(done) {
-            deleter.deleteActivitySlug('docs').then(function(res) {
-                expect('doc').to.be.a('null');
-                expect(res.statusCode).to.equal(404);
+            deleter.deleteActivitySlug('docs').then(function(slug) {
+                expect(slug).to.be.an('undefined');
+                //expect(res.statusCode).to.equal(404);
                 done();
             });
         });

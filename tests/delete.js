@@ -5,12 +5,11 @@ module.exports = function(expect) {
     /* DELETE one of the activities endpoints and check whether it can still
        be retrieved from the database */
     describe('DELETE /activities', function() {
-        it('Returns an Object Not Found error for deleted activity',
-        function(done) {
+        it('Deletes the desired activity', function(done) {
             deleter.deleteActivity('Documentation')
-            .then(function(res) {
-                expect('Documentation').to.be.a('null');
-                expect(res.statusCode).to.equal(404);
+            .then(function(activity) {
+                expect(activity).to.be.an('undefined');
+                //expect(res.statusCode).to.equal(404);
                 done();
             });
         });

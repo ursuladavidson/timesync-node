@@ -13,11 +13,11 @@ module.exports = function(expect) {
         });
 
         it('Fails if it receives an invalid time id', function(done) {
-            deleter.deleteTime('notanid').then(function(timeid, res) {
+            deleter.deleteTime('notanid').then(function(timeid) {
                 expect(timeid).to.be.an('undefined');
                 //expect(res.statusCode).to.equal(400);
                 done();
             });
         });
     });
-};  
+};

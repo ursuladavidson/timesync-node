@@ -17,7 +17,7 @@ module.exports = function(expect) {
         it('Fails if it receives an invalid project', function(done) {
             deleter.deleteProject('Nothing').then(function(project) {
                 //expect(res.statusCode).to.equal(400);
-                expect(project).to.be.an('undefined');
+                expect(project).to.be.a('Nothing');
                 done();
             });
         });
@@ -36,7 +36,7 @@ module.exports = function(expect) {
         it('Fails if it receives a non-existent slug', function() {
             deleter.deleteProjectSlug('notaproject').then(function(slug) {
                 //expect(res.statusCode).to.equal(400);
-                expect(slug).to.be.an('undefined');
+                expect(slug).to.be.an('notaproject');
                 done();
             });
         });

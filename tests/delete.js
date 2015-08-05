@@ -15,9 +15,9 @@ module.exports = function(expect) {
         });
 
         it('Fails if it receives an invalid project', function(done) {
-            deleter.deleteProject('Nothing').then(function(project) {
+            deleter.deleteProject('Fail Project').then(function(project) {
                 //expect(res.statusCode).to.equal(400);
-                expect(project).to.be.a('Nothing');
+                expect(project).to.be.a('Fail Project');
                 done();
             });
         });
